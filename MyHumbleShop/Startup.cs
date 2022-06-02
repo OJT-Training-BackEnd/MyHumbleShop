@@ -6,11 +6,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using MyHumbleShop.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TikiFake.DatabaseSettings;
 
 namespace MyHumbleShop
 {
@@ -26,7 +29,11 @@ namespace MyHumbleShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<TakaTikiDatabaseSettings>(
+                Configuration.GetSection(nameof(TakaTikiDatabaseSettings)));
 
+            services.AddSingleton<ITakaTikiDatabaseSettings>(
+                sp => sp.GetRequiredService<IOptions<TakaTikiDatabaseSettings>>().Value);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

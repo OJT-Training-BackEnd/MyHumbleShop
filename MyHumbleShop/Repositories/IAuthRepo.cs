@@ -1,6 +1,6 @@
 ﻿namespace MyHumbleShop.Repositories
 {
-    public class temp
+    public interface IAuthRepo
     {
     }
 }
