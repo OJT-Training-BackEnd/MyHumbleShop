@@ -8,12 +8,15 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using TikiFake.DatabaseSettings;
+using TikiFake.Dtos.User;
 
 namespace MyHumbleShop.Repositories
 {
-    public class AuthRepo
+    public class AuthRepo : IAuthRepo
     {
         private readonly IMongoCollection<Users> _user;
         private readonly IMapper _mapper;
@@ -29,7 +32,42 @@ namespace MyHumbleShop.Repositories
             _mapper = mapper;
             _configuration = configuration;
         }
+        public async Task<ServiceResponse<string>> Register(UserRegisterDto userDto, string password)
+        {
+            var response = new ServiceResponse<string>();
+            if (UserExists(userDto.Username))
+            {
+                response.Success = false;
+                response.Message = "User already exists.";
+                return response;
+            }
+            var passwordEncode = PasswordEncryption(password);
+            userDto.Password = passwordEncode;
 
+            Users user = _mapper.Map<Users>(userDto);
+            _user.InsertOne(user);
+ 
+            response.Data = CreateToken(user);
+            response.Message = "Register sucessed";
+            return response;
+        }
+        private string PasswordEncryption(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                //send a sample text to hash 
+                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                //get the hashed string
+                return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+            }
+        }
+        public bool UserExists(string username)
+        {
+            var user = _user.Find(n => n.Username == username).FirstOrDefault();
+            if (user == null)
+                return false;
+            return true;
+        }
         private string CreateToken(Users user)
         {
             var claims = new List<Claim>
