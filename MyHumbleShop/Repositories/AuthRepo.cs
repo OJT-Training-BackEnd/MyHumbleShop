@@ -56,5 +56,30 @@ namespace MyHumbleShop.Repositories
 
             return tokenHandler.WriteToken(token);
         }
+
+        public async Task<ServiceResponse<string>> Login(string username, string password)
+        {
+            var response = new ServiceResponse<string>();
+
+            if (string.IsNullOrEmpty(username))
+            {
+                response.Success = false;
+                response.Message = "Please enter your password!";
+                return response;
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                response.Success = false;
+                response.Message = "Please enter your message!";
+                return response;
+            }
+
+            return response;
+
+
+        }
+
+
     }
 }
