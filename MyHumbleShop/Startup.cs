@@ -39,6 +39,7 @@ namespace MyHumbleShop
                 sp => sp.GetRequiredService<IOptions<TakaTikiDatabaseSettings>>().Value);
 
             services.AddControllers();
+            services.AddTransient<IAuthRepo, AuthRepo>();
 
             services.AddAutoMapper(typeof(Startup));
 
