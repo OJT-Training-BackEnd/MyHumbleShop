@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MyHumbleShop.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MyHumbleShop.Repositories;
 using MyHumbleShop.Models;
 using Microsoft.AspNetCore.Authorization;
 using TikiFake.Dtos.User;
@@ -18,6 +18,7 @@ namespace MyHumbleShop.Controllers
     {
         private readonly IAuthRepo _authRepo;
 
+
         [AllowAnonymous]
         [HttpPost("Login")]
 
@@ -28,5 +29,18 @@ namespace MyHumbleShop.Controllers
                 return BadRequest(response);
             return Ok(response);
         }
+
+            public AuthController (IAuthRepo authRepo)
+            {
+                _authRepo = authRepo;
+            }
+            [HttpPost("Register")]
+            public async Task<ActionResult<ServiceResponse<UserRegisterDto>>> Register(UserRegisterDto userDto)
+            {
+                var res = await _authRepo.Register(userDto, userDto.Password);
+                if (!res.Success)
+                    return BadRequest(res);
+                return Ok(res);
+            }
     }
 }

@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "eYuhHAZ4CygpwWojSxbSgtqYV2aS6K5+dinGhi6gNN8VVRZUtQoETz+E2XwVCNQCKTW1yzNr7UO+tpY9xqn4BA==",
+  "dgSpecHash": "4whb5efWDzff/W3ApbxUBlekeXS5kjwMreeS+tiweroW7LWsJSQR7/MpVjqZ0iT+TiQh74lop3TJfLxfM37Lrw==",
   "success": true,
   "projectFilePath": "D:\\Study\\CN6\\MongoDB\\Prj\\TakaTiki_3\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ADMIN\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\dnsclient\\1.6.0\\dnsclient.1.6.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
