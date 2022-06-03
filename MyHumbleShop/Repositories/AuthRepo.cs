@@ -94,5 +94,62 @@ namespace MyHumbleShop.Repositories
 
             return tokenHandler.WriteToken(token);
         }
+
+        public async Task<ServiceResponse<string>> Login(string username, string password)
+        {
+            var response = new ServiceResponse<string>();
+
+            if (string.IsNullOrEmpty(username))
+            {
+                response.Success = false;
+                response.Message = "Please enter your username!";
+                return response;
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                response.Success = false;
+                response.Message = "Please enter your password!";
+                return response;
+            }
+
+            var user = _user.Find(s => s.Username.Equals(username)).FirstOrDefault();
+
+            if(user == null)
+            {
+                response.Success = false;
+                response.Message = "User does not exist!";
+                return response;
+            }
+
+            var accPassword = PasswordEncryption(password);
+            if (accPassword != user.Password)
+            {
+                response.Message = "Incorrect password";
+                return response;
+            }
+
+            if (user != null)
+            {
+                response.Success = true;
+                response.Message = "Login succesfully!";
+                response.Data = CreateToken(user);
+                return response;
+            }
+
+            return response;
+
+
+        }
+
+        public Task<ServiceResponse<List<Users>>> Get()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ServiceResponse<List<Users>>> Get(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
