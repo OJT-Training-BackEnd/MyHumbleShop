@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Study\\CN6\\MongoDB\\Prj\\TakaTiki_3\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj": {}
+    "D:\\OJT\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj": {}
   },
   "projects": {
-    "D:\\Study\\CN6\\MongoDB\\Prj\\TakaTiki_3\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj": {
+    "D:\\OJT\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\CN6\\MongoDB\\Prj\\TakaTiki_3\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
+        "projectUniqueName": "D:\\OJT\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
         "projectName": "MyHumbleShop",
-        "projectPath": "D:\\Study\\CN6\\MongoDB\\Prj\\TakaTiki_3\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\CN6\\MongoDB\\Prj\\TakaTiki_3\\MyHumbleShop\\MyHumbleShop\\obj\\",
+        "projectPath": "D:\\OJT\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
+        "packagesPath": "C:\\Users\\jike\\.nuget\\packages\\",
+        "outputPath": "D:\\OJT\\MyHumbleShop\\MyHumbleShop\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jike\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -70,6 +70,10 @@
               "target": "Package",
               "version": "[2.15.1, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
@@ -101,7 +105,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

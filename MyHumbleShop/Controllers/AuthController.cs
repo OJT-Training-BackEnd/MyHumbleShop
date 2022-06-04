@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using MyHumbleShop.Models;
 using Microsoft.AspNetCore.Authorization;
 using TikiFake.Dtos.User;
+using TikiFake.Models;
 
 namespace MyHumbleShop.Controllers
 {
@@ -30,17 +31,27 @@ namespace MyHumbleShop.Controllers
             return Ok(response);
         }
 
-            public AuthController (IAuthRepo authRepo)
-            {
-                _authRepo = authRepo;
-            }
-            [HttpPost("Register")]
-            public async Task<ActionResult<ServiceResponse<UserRegisterDto>>> Register(UserRegisterDto userDto)
-            {
-                var res = await _authRepo.Register(userDto, userDto.Password);
-                if (!res.Success)
-                    return BadRequest(res);
-                return Ok(res);
-            }
+        public AuthController (IAuthRepo authRepo)
+        {
+            _authRepo = authRepo;
+        }
+        [AllowAnonymous]
+        [HttpPost("Register")]
+        public async Task<ActionResult<ServiceResponse<UserRegisterDto>>> Register(UserRegisterDto userDto)
+        {
+            var res = await _authRepo.Register(userDto, userDto.Password);
+            if (!res.Success)
+                return BadRequest(res);
+            return Ok(res);
+        }
+        [AllowAnonymous]
+        [HttpPost("Renew")]
+        public async Task<ActionResult<ServiceResponse<List<Users>>>> RenewToken(TokenModel model)
+        {
+            var response = await _authRepo.RenewToken(model);
+            if (!response.Success)
+                return BadRequest(response);
+            return Ok(response);
+        }
     }
 }
