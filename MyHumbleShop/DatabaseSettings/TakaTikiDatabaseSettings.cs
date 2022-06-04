@@ -13,5 +13,6 @@ namespace TikiFake.DatabaseSettings
         public string ProductsCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
+        public string RefreshTokensCollectionName { get; set; }
     }
 }
