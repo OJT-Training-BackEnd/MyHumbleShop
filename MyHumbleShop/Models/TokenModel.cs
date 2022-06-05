@@ -9,5 +9,12 @@ namespace TikiFake.Models
     {
         public string AccessToken { get; set; }
         public string RefreshToken { get; set; }
+
+        public void Logout()
+        {
+            AccessToken = null;
+            RefreshToken = null;
+            
+        }
     }
 }
