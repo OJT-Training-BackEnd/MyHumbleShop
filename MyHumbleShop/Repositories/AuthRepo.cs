@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MyHumbleShop.Models;
 using Newtonsoft.Json.Linq;
@@ -24,6 +25,7 @@ namespace MyHumbleShop.Repositories
         private readonly IMongoCollection<RefreshToken> _refreshToken;
         private readonly IMapper _mapper;
         private readonly IConfiguration _configuration;
+        private readonly List<RefreshToken> refreshTokens = new List<RefreshToken>();
 
         public AuthRepo(ITakaTikiDatabaseSettings settings,
                         IMapper mapper,
@@ -76,7 +78,7 @@ namespace MyHumbleShop.Repositories
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim("_id", user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Username),
                 new Claim(ClaimTypes.Role, user.Role),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
@@ -170,9 +172,12 @@ namespace MyHumbleShop.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<ServiceResponse<List<Users>>> Get(string id)
+       
+        private Users getuserbyId(string id)
         {
-            throw new NotImplementedException();
+            var user = _user.Find(s => s.Id.Equals(id)).FirstOrDefault();
+
+            return user;
         }
         private string GenerateRefreshToken()
         {
@@ -246,6 +251,7 @@ namespace MyHumbleShop.Repositories
                     response.Message = "Refresh token has been revoked";
                     return response;
                 }
+
                 //check 6: AccessToken id == JwtId in RefreshToke
                 var jti = tokenInVerification.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
                 if (storedToken.JwtId != jti)
@@ -254,6 +260,7 @@ namespace MyHumbleShop.Repositories
                     response.Message = "Token doesn't match";
                     return response;
                 }
+
                 //Update token is used
                 storedToken.isRevoked = true;
                 storedToken.isUsed = true;
@@ -280,6 +287,45 @@ namespace MyHumbleShop.Repositories
             var dateTimeInterval = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
             dateTimeInterval.AddSeconds(utcExpireDate).ToUniversalTime();
             return dateTimeInterval;
+        }
+
+        public async Task<ServiceResponse<string>> Logout(string userId)
+        {
+            var response = new ServiceResponse<string>();
+
+            var refresh = _refreshToken.Find(p => p.UserId.Equals(userId)).FirstOrDefault();
+            if(refresh != null)
+            {
+                _refreshToken.DeleteOne(p => p.UserId.Equals(userId));
+                response.Success = true;
+                response.Message = "Success";
+                return response;
+            }
+            return response;
+           
+
+                  
+            /*if (result == null) 
+            {
+                
+                response.Success = true;
+                response.Message = "Success";
+
+                return response;
+
+            }
+            else
+            {
+                response.Success = false;
+                response.Message = "Fail";
+                return response;
+            }*/
+
+        }
+       
+        public Task<ServiceResponse<List<Users>>> Get(string id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

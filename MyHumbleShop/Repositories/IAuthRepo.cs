@@ -5,6 +5,7 @@ using System.Collections.Generic;
 ﻿using System.Threading.Tasks;
 using TikiFake.Dtos.User;
 using TikiFake.Models;
+using System;
 
 namespace MyHumbleShop.Repositories
 {
@@ -13,13 +14,14 @@ namespace MyHumbleShop.Repositories
 
         Task<ServiceResponse<List<Users>>> Get();
 
-        Task<ServiceResponse<List<Users>>> Get(string id);
 
         Task<ServiceResponse<string>> Login(string username, string password);
 
         Task<ServiceResponse<string>> Register(UserRegisterDto user, string password);
         Task<ServiceResponse<string>> RenewToken(TokenModel model);
         bool UserExists(string username);
+
+        Task<ServiceResponse<string>> Logout(string userId);
 
     }
 }
