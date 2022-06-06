@@ -21,12 +21,17 @@ namespace MyHumbleShop.Models
         [BsonElement("total price")]
         public string TotalPrice { get; set; }
         [BsonElement("order detail")]
-        public List<UserCart> OrderDetails { get; set; }
+        public List<OrderDetail> OrderDetails { get; set; }
         [BsonElement("shipping address")]
         public string ShippingAddress { get; set; }
         [BsonElement("customer name")]
         public string CustomerName { get; set; }
         [BsonElement("customer phone")]
         public string CustomerPhone { get; set; }
+
+        public static implicit operator List<object>(Orders v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

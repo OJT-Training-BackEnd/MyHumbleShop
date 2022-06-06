@@ -111,12 +111,26 @@ namespace MyHumbleShop.Repositories
                 totalPrice += int.Parse(product.Price) * int.Parse(orderDetail.Quantiy);
             }
 
+            List<OrderDetail> orderDetails = new List<OrderDetail>();
+            foreach (var userCart in user.Cart)
+            {
+                var product = await _products.Find(n => n.Id == userCart.ProductId).FirstOrDefaultAsync();
+                OrderDetail odt = new OrderDetail
+                {
+                    ProductId = userCart.ProductId,
+                    ProductName = product.ProductName,
+                    ProductPrice = product.Price,
+                    Quantiy = userCart.Quantiy
+                };
+                orderDetails.Add(odt);
+            }
+
             Orders order = new Orders
             {
                 CustomerId = userId,
                 DateOrder = DateTime.Now,
                 TotalPrice = totalPrice.ToString(),
-                OrderDetails = user.Cart,
+                OrderDetails = orderDetails,
                 ShippingAddress = address,
                 CustomerName = customerName,
                 CustomerPhone = customerPhone
