@@ -40,6 +40,7 @@ namespace MyHumbleShop
 
             services.AddControllers();
             services.AddTransient<IAuthRepo, AuthRepo>();
+            services.AddTransient<IUserRepo, UserRepo>();
 
             services.AddAutoMapper(typeof(Startup));
 
