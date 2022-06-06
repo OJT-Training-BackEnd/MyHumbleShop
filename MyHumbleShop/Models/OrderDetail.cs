@@ -11,6 +11,9 @@ namespace MyHumbleShop.Models
     {
         [BsonRepresentation(BsonType.ObjectId)]
         public string ProductId { get; set; }
+        public string ProductName { get; set; }
+        public string ProductPrice { get; set; }
         public string Quantiy { get; set; }
+
     }
 }
