@@ -18,8 +18,10 @@ namespace MyHumbleShop.Models
         public string Status { get; set; } = OrderStatus.PREPARING.ToString();
         [BsonElement("date")]
         public DateTime DateOrder { get; set; }
+        [BsonElement("total price")]
+        public string TotalPrice { get; set; }
         [BsonElement("order detail")]
-        public List<OrderDetail> OrderDetails { get; set; }
+        public List<UserCart> OrderDetails { get; set; }
         [BsonElement("shipping address")]
         public string ShippingAddress { get; set; }
         [BsonElement("customer name")]

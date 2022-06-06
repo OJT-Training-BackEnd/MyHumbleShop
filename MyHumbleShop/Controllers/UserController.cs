@@ -35,5 +35,12 @@ namespace MyHumbleShop.Controllers
             var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
             return Ok(await _userRepo.ViewCart(userId));
         }
+
+        [HttpPost("saveOrder")]
+        public async Task<ActionResult<ServiceResponse<Orders>>> saveOrder(string address, string name, string phone)
+        {
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+            return Ok(await _userRepo.SaveOrder(userId, address, name, phone));
+        }
     }
 }

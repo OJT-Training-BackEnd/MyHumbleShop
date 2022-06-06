@@ -17,6 +17,7 @@ namespace MyHumbleShop.Repositories
     {
         private readonly IMongoCollection<Users> _user;
         private readonly IMongoCollection<Products> _products;
+        private readonly IMongoCollection<Orders> _orders;
         private readonly IMongoCollection<RefreshToken> _refreshToken;
         private readonly IMapper _mapper;
         private readonly IConfiguration _configuration;
@@ -31,6 +32,7 @@ namespace MyHumbleShop.Repositories
             _user = database.GetCollection<Users>(settings.UsersCollectionName);
             _products = database.GetCollection<Products>(settings.ProductsCollectionName);
             _refreshToken = database.GetCollection<RefreshToken>(settings.RefreshTokensCollectionName);
+            _orders= database.GetCollection<Orders>(settings.OrdersCollectionName);
             _mapper = mapper;
             _configuration = configuration;
         }
@@ -81,6 +83,50 @@ namespace MyHumbleShop.Repositories
             _user.ReplaceOne(n => n.Id == user.Id, user);
             response.Success = true;
             response.Message = "Add new product to cart";
+            return response;
+        }
+
+        public async Task<ServiceResponse<string>> SaveOrder(string userId, string address, string customerName, string customerPhone)
+        {
+            var response = new ServiceResponse<string>();
+            var user = await _user.Find(n => n.Id == userId).FirstOrDefaultAsync();
+            if (user == null)
+            {
+                response.Success = false;
+                response.Message = "User not found";
+                return response;
+            }
+
+            if (user.Cart == null)
+            {
+                response.Success = false;
+                response.Message = "You have no item in the cart";
+                return response;
+            }
+
+            int totalPrice = 0;
+            foreach (var orderDetail in user.Cart)
+            {
+                var product = await _products.Find(n => n.Id == orderDetail.ProductId).FirstOrDefaultAsync();
+                totalPrice += int.Parse(product.Price) * int.Parse(orderDetail.Quantiy);
+            }
+
+            Orders order = new Orders
+            {
+                CustomerId = userId,
+                DateOrder = DateTime.Now,
+                TotalPrice = totalPrice.ToString(),
+                OrderDetails = user.Cart,
+                ShippingAddress = address,
+                CustomerName = customerName,
+                CustomerPhone = customerPhone
+            };
+            _orders.InsertOne(order);
+            user.Cart = null;
+            _user.ReplaceOne(n => n.Id == user.Id, user);
+            response.Success = true;
+            response.Message = "Order is being prepared";
+            response.Data = order;
             return response;
         }
 
