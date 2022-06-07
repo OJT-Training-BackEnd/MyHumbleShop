@@ -3,6 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using MyHumbleShop.DatabaseSettings;
+using MyHumbleShop.Dtos.User;
 using MyHumbleShop.Models;
 using Newtonsoft.Json.Linq;
 using System;

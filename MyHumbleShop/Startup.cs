@@ -17,7 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using TikiFake.DatabaseSettings;
 
 namespace MyHumbleShop
 {
@@ -42,7 +42,7 @@ namespace MyHumbleShop
             services.AddControllers();
             services.AddTransient<IAuthRepo, AuthRepo>();
             services.AddTransient<IUserRepo, UserRepo>();
-
+            services.AddTransient<ISearchRepo, SearchRepo>();
             services.AddAutoMapper(typeof(Startup));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
