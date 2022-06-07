@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TikiFake.DatabaseSettings
+namespace MyHumbleShop.DatabaseSettings
 {
     public class TakaTikiDatabaseSettings : ITakaTikiDatabaseSettings
     {

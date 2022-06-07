@@ -13,9 +13,9 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using TikiFake.DatabaseSettings;
-using TikiFake.Dtos.User;
-using TikiFake.Models;
+using MyHumbleShop.DatabaseSettings;
+using MyHumbleShop.Dtos.User;
+using MyHumbleShop.Models;
 
 namespace MyHumbleShop.Repositories
 {
