@@ -29,7 +29,7 @@ namespace MyHumbleShop.Repositories
         {
             
             var response = new ServiceResponse<List<ProductByCategoryDto>>();
-
+            var productByCategoryDto = new ProductByCategoryDto();
             if (string.IsNullOrEmpty(category))
             {
                 response.Message = "This category is not exist!";
@@ -48,9 +48,27 @@ namespace MyHumbleShop.Repositories
             return response;
         }
 
-        public Task<ServiceResponse<List<Products>>> SearchByProductName(string productnName)
+        public async Task<ServiceResponse<List<Products>>> SearchByProductName(string productName)
         {
-            throw new System.NotImplementedException();
+            var response = new ServiceResponse<List<Products>>();
+            if (string.IsNullOrEmpty(productName))
+            {
+                response.Message = "This product is not exist!";
+                response.Data = response;
+                return response;
+            }
+
+            // Create indexes
+            var indexKeysDefinition = Builders<Products>.IndexKeys.Text(x => x.ProductName);
+            await _product.Indexes.CreateOneAsync(new CreateIndexModel<Products>(indexKeysDefinition));
+            
+            // Search full text
+            var productListSearchFullTextName = _product.Find(Builders<Products>.Filter.Text(productName)).ToList();
+
+            response.Message = "List product by name";
+            response.Data = productListSearchFullTextName;
+            return response;
         }
+
     }
 }
