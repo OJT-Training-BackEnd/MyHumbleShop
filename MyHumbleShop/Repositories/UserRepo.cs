@@ -39,11 +39,18 @@ namespace MyHumbleShop.Repositories
         {
             var response = new ServiceResponse<string>();
             var user = await _user.Find(n => n.Id == userId).FirstOrDefaultAsync();
+            var userRefresh = _refreshToken.Find(n => n.UserId == userId).FirstOrDefault();
 
             if (user == null)
             {
                 response.Success = false;
                 response.Message = "User not found";
+                return response;
+            }
+            if (userRefresh == null)
+            {
+                response.Success = false;
+                response.Message = "Token is expired";
                 return response;
             }
 
@@ -88,13 +95,19 @@ namespace MyHumbleShop.Repositories
         {
             var response = new ServiceResponse<string>();
             var user = await _user.Find(n => n.Id == userId).FirstOrDefaultAsync();
+            var userRefresh = _refreshToken.Find(n => n.UserId == userId).FirstOrDefault();
             if (user == null)
             {
                 response.Success = false;
                 response.Message = "User not found";
                 return response;
             }
-
+            if (userRefresh == null)
+            {
+                response.Success = false;
+                response.Message = "Token is expired";
+                return response;
+            }
             if (user.Cart == null)
             {
                 response.Success = false;

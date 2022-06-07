@@ -15,6 +15,9 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using MyHumbleShop.DatabaseSettings;
+using MyHumbleShop.Dtos.User;
+using MyHumbleShop.Models;
 
 namespace MyHumbleShop.Repositories
 {

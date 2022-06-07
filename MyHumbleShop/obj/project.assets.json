@@ -2259,20 +2259,45 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\admin\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\jike\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+>>>>>>> 9e0c0ef71d095f6355ca6a26f18eddd46a7a0b2e
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\project-vs\\clone1\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
       "projectName": "MyHumbleShop",
       "projectPath": "C:\\project-vs\\clone1\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
       "outputPath": "C:\\project-vs\\clone1\\MyHumbleShop\\MyHumbleShop\\obj\\",
+=======
+      "projectUniqueName": "D:\\OJT\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
+      "projectName": "MyHumbleShop",
+      "projectPath": "D:\\OJT\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
+      "packagesPath": "C:\\Users\\jike\\.nuget\\packages\\",
+      "outputPath": "D:\\OJT\\MyHumbleShop\\MyHumbleShop\\obj\\",
+>>>>>>> 9e0c0ef71d095f6355ca6a26f18eddd46a7a0b2e
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+        "C:\\Users\\jike\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+>>>>>>> 9e0c0ef71d095f6355ca6a26f18eddd46a7a0b2e
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -2356,7 +2381,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+>>>>>>> 9e0c0ef71d095f6355ca6a26f18eddd46a7a0b2e
       }
     }
   }
