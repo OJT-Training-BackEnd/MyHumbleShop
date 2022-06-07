@@ -3,9 +3,8 @@ using MyHumbleShop.Models;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 ﻿using System.Threading.Tasks;
-using TikiFake.Dtos.User;
-using TikiFake.Models;
 using System;
+using MyHumbleShop.Dtos.User;
 
 namespace MyHumbleShop.Repositories
 {

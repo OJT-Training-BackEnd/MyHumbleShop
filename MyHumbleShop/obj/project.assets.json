@@ -2259,19 +2259,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\ojt-training\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
+      "projectUniqueName": "C:\\project-vs\\clone1\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
       "projectName": "MyHumbleShop",
-      "projectPath": "C:\\ojt-training\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\ojt-training\\MyHumbleShop\\MyHumbleShop\\obj\\",
+      "projectPath": "C:\\project-vs\\clone1\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
+      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+      "outputPath": "C:\\project-vs\\clone1\\MyHumbleShop\\MyHumbleShop\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2356,7 +2356,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

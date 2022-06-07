@@ -7,9 +7,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using MyHumbleShop.Models;
 using Microsoft.AspNetCore.Authorization;
-using TikiFake.Dtos.User;
-using TikiFake.Models;
 using System.Security.Claims;
+using MyHumbleShop.Dtos.User;
 
 namespace MyHumbleShop.Controllers
 {
