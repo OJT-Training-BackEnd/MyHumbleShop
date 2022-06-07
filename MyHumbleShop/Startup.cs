@@ -10,13 +10,14 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MyHumbleShop.DatabaseSettings;
 using MyHumbleShop.Repositories;
 using Swashbuckle.AspNetCore.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TikiFake.DatabaseSettings;
+
 
 namespace MyHumbleShop
 {
