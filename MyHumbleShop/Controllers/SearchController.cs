@@ -29,13 +29,17 @@ namespace MyHumbleShop.Controllers
                 return NotFound();
             return Ok(response);
         }
-            //[HttpGet("SearchByCategory")]
-            //public async Task<ActionResult<ServiceResponse<List<ProductByCategoryDto>>>> GetAllProductByCategory(ProductByCategoryDto category)
-            //{
-            //    var response = await _searchRepo.SearchByCategory(category.Category);
-            //    if (response == null)
-            //        return NotFound();
-            //    return Ok(response);
-            //}
+
+        [HttpGet("SearchByProductName")]
+        public async Task<ActionResult<ServiceResponse<List<Products>>>> GetAllProductByProductName(string productName)
+        {
+            var response = await _searchRepo.SearchByProductName(productName);
+            if (response == null)
+                return NotFound();
+            return Ok(response);
         }
+        
+
+
+    }
 }
