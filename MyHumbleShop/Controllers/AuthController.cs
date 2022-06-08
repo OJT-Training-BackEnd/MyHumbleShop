@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using MyHumbleShop.Models;
 using Microsoft.AspNetCore.Authorization;
 using TikiFake.Dtos.User;
+using System.Security.Claims;
 
 namespace MyHumbleShop.Controllers
 {
@@ -34,6 +35,7 @@ namespace MyHumbleShop.Controllers
             {
                 _authRepo = authRepo;
             }
+
             [HttpPost("Register")]
             public async Task<ActionResult<ServiceResponse<UserRegisterDto>>> Register(UserRegisterDto userDto)
             {
@@ -42,5 +44,21 @@ namespace MyHumbleShop.Controllers
                     return BadRequest(res);
                 return Ok(res);
             }
+        
+        [Authorize]
+        [HttpDelete("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            string rawUserId = HttpContext.User.FindFirstValue("Id");
+
+            if (!Int32.TryParse(rawUserId, out int userId))
+            {
+                return Unauthorized();
+            }
+
+            await _authRepo.DeleteAll(userId);
+
+            return NoContent();
+        }
     }
 }

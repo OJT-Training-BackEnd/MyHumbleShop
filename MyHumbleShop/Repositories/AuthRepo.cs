@@ -21,6 +21,7 @@ namespace MyHumbleShop.Repositories
         private readonly IMongoCollection<Users> _user;
         private readonly IMapper _mapper;
         private readonly IConfiguration _configuration;
+        private readonly List<RefreshToken> _refreshTokens = new List<RefreshToken>();
 
         public AuthRepo(ITakaTikiDatabaseSettings settings,
                         IMapper mapper,
@@ -151,5 +152,13 @@ namespace MyHumbleShop.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public Task DeleteAll(int userId)
+        {
+            _refreshTokens.RemoveAll(p => p.UserId == userId);
+
+            return Task.CompletedTask;
+        }
     }
+    
 }

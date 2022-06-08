@@ -16,6 +16,9 @@ namespace MyHumbleShop.Repositories
         Task<ServiceResponse<string>> Login(string username, string password);
 
         Task<ServiceResponse<string>> Register(UserRegisterDto user, string password);
+
+        Task DeleteAll(int userId);
+
         bool UserExists(string username);
 
     }
