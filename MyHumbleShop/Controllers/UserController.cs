@@ -17,9 +17,11 @@ namespace MyHumbleShop.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepo _userRepo;
-        public UserController(IUserRepo userRepo)
+        private readonly IProductRepo _productRepo;
+        public UserController(IUserRepo userRepo, IProductRepo productRepo)
         {
             _userRepo = userRepo;
+            _productRepo = productRepo;
         }
 
         [HttpPut("addToCart")]
@@ -42,5 +44,16 @@ namespace MyHumbleShop.Controllers
             var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
             return Ok(await _userRepo.SaveOrder(userId, address, name, phone));
         }
+        [Authorize]
+
+        //Get User by id
+        [HttpGet("GetProfile")]
+        public async Task<ActionResult<ServiceResponse<Users>>> Get()
+        {
+            string rawUserId = HttpContext.User.FindFirstValue("_id");
+
+            return Ok(await _userRepo.GetUserProfile(rawUserId));
+        }
+       
     }
 }

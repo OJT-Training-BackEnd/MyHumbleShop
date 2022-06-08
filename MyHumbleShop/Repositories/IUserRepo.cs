@@ -12,5 +12,9 @@ namespace MyHumbleShop.Repositories
         Task<ServiceResponse<List<UserCart>>> ViewCart(string userId);
         Task<ServiceResponse<string>> SaveOrder(string userId, string address, string customerName, string customerPhone);
 
+        Task<ServiceResponse<List<Users>>> GetUserProfile(string id);
+
+
+
     }
 }

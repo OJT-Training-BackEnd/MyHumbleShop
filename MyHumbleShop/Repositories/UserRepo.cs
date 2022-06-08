@@ -178,5 +178,13 @@ namespace MyHumbleShop.Repositories
             response.Message = "Here is your cart";
             return response;
         }
+        public async Task<ServiceResponse<List<Users>>> GetUserProfile(string id)
+        {
+            var serviceResponses = new ServiceResponse<List<Users>>();
+            var dbUser = await _user.Find(s => s.Id == id).FirstOrDefaultAsync();
+            serviceResponses.Data = dbUser;
+            return serviceResponses;
+        }
+       
     }
 }

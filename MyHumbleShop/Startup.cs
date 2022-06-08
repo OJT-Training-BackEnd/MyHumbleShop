@@ -43,6 +43,10 @@ namespace MyHumbleShop
             services.AddTransient<IAuthRepo, AuthRepo>();
             services.AddTransient<IUserRepo, UserRepo>();
             services.AddTransient<ISearchRepo, SearchRepo>();
+            services.AddTransient<IAdminRepo, AdminRepo>();
+            services.AddTransient<IProductRepo, ProductRepo>();
+
+
             services.AddAutoMapper(typeof(Startup));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
