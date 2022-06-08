@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TikiFake.Dtos.User
+namespace MyHumbleShop.Dtos.User
 {
     public class UserRegisterDto
     {

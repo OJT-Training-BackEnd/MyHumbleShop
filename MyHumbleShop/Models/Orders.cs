@@ -18,6 +18,8 @@ namespace MyHumbleShop.Models
         public string Status { get; set; } = OrderStatus.PREPARING.ToString();
         [BsonElement("date")]
         public DateTime DateOrder { get; set; }
+        [BsonElement("total price")]
+        public string TotalPrice { get; set; }
         [BsonElement("order detail")]
         public List<OrderDetail> OrderDetails { get; set; }
         [BsonElement("shipping address")]
@@ -26,5 +28,10 @@ namespace MyHumbleShop.Models
         public string CustomerName { get; set; }
         [BsonElement("customer phone")]
         public string CustomerPhone { get; set; }
+
+        public static implicit operator List<object>(Orders v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

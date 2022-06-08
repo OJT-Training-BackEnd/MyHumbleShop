@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TikiFake.DatabaseSettings
+namespace MyHumbleShop.DatabaseSettings
 {
     public class TakaTikiDatabaseSettings : ITakaTikiDatabaseSettings
     {
@@ -13,5 +13,6 @@ namespace TikiFake.DatabaseSettings
         public string ProductsCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
+        public string RefreshTokensCollectionName { get; set; }
     }
 }
