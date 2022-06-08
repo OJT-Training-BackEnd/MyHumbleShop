@@ -64,7 +64,6 @@ namespace MyHumbleShop.Repositories
             
             // Search full text
             var productListSearchFullTextName = _product.Find(Builders<Products>.Filter.Text(productName)).ToList();
-
             response.Message = "List product by name";
             response.Data = productListSearchFullTextName;
             return response;

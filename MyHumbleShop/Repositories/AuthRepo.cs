@@ -142,8 +142,13 @@ namespace MyHumbleShop.Repositories
             }
 
             var user = _user.Find(s => s.Username.Equals(username)).FirstOrDefault();
-
-            if(user == null)
+            if (user.Status == false)
+            {
+                response.Success = false;
+                response.Message = "Account has been disabled";
+                return response;
+            }
+            if (user == null)
             {
                 response.Success = false;
                 response.Message = "User does not exist!";

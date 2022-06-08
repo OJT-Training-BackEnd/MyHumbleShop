@@ -18,6 +18,8 @@ namespace MyHumbleShop.Models
         public string Description { get; set; }
         [BsonElement("price")]
         public string Price { get; set; }
+        [BsonElement("status")]
+        public bool Status { get; set; } = true;
         [BsonElement("quantity")]
         public string Quantity { get; set; }
         [BsonElement("categoryID")]
