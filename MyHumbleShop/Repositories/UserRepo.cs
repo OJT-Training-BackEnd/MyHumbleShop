@@ -62,6 +62,15 @@ namespace MyHumbleShop.Repositories
                 return response;
             }
 
+            if (productExist.Status == false)
+            {
+                return new ServiceResponse<string>()
+                {
+                    Success = false,
+                    Message = "The Product is sold out!"
+                };
+            }
+
             if (user.Cart == null)
             {
                 user.Cart = new List<UserCart>();
@@ -71,6 +80,15 @@ namespace MyHumbleShop.Repositories
             {
                 if (pro.ProductId == productId)
                 {
+                    if (int.Parse(pro.Quantiy) == int.Parse(productExist.Quantity))
+                    {
+                        return new ServiceResponse<string>
+                        {
+                            Success = false,
+                            Message = "This product's quantity has been maximum!"
+                        };
+                    }
+
                     pro.Quantiy = (int.Parse(pro.Quantiy) + 1).ToString();
                     _user.ReplaceOne(n => n.Id == user.Id, user);
                     response.Success = true;
@@ -126,6 +144,13 @@ namespace MyHumbleShop.Repositories
             foreach (var userCart in user.Cart)
             {
                 var product = await _products.Find(n => n.Id == userCart.ProductId).FirstOrDefaultAsync();
+                product.Quantity = (int.Parse(product.Quantity) - int.Parse(userCart.Quantiy)).ToString();
+                if (int.Parse(product.Quantity) == 0)
+                {
+                    product.Status = false;
+                }
+                _products.ReplaceOne(n => n.Id == product.Id, product);
+
                 OrderDetail odt = new OrderDetail
                 {
                     ProductId = userCart.ProductId,
