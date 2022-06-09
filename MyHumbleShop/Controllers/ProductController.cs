@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MyHumbleShop.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "ADMIN")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase

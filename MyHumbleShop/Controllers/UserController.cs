@@ -11,7 +11,7 @@ using System.Security.Claims;
 
 namespace MyHumbleShop.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "CUSTOMER")]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -54,6 +54,21 @@ namespace MyHumbleShop.Controllers
 
             return Ok(await _userRepo.GetUserProfile(rawUserId));
         }
-       
+
+        [HttpGet("GetAllProduct")]
+        public async Task<ActionResult<ServiceResponse<List<Products>>>> GetAllProducts()
+        {
+            try
+            {
+                return Ok(await _productRepo.GetProductAll());
+
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+
+            }
+        }
+
     }
 }

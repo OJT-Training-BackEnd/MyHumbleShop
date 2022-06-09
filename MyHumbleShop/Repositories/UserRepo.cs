@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
 using MyHumbleShop.DatabaseSettings;
+using MyHumbleShop.Dtos.User;
 
 namespace MyHumbleShop.Repositories
 {
@@ -203,11 +204,13 @@ namespace MyHumbleShop.Repositories
             response.Message = "Here is your cart";
             return response;
         }
-        public async Task<ServiceResponse<List<Users>>> GetUserProfile(string id)
+        public async Task<ServiceResponse<UserProfileDto>> GetUserProfile(string id)
         {
-            var serviceResponses = new ServiceResponse<List<Users>>();
+            var serviceResponses = new ServiceResponse<UserProfileDto>();
             var dbUser = await _user.Find(s => s.Id == id).FirstOrDefaultAsync();
-            serviceResponses.Data = dbUser;
+            var displayUser = _mapper.Map<UserProfileDto>(dbUser);
+            serviceResponses.Data = displayUser;
+            serviceResponses.Message = "This is your profile";
             return serviceResponses;
         }
        
