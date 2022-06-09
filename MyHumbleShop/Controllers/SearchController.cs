@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyHumbleShop.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SearchController : ControllerBase
