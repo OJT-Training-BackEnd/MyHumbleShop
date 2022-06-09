@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace MyHumbleShop.Controllers
 {
+    [Authorize(Roles = "ADMIN")]
     [Route("api/[controller]")]
     [ApiController]
     public class AdminController : ControllerBase
@@ -21,7 +22,7 @@ namespace MyHumbleShop.Controllers
             _adminRepo = adminRepo;
         }
         #region UnableAccount
-        [Authorize]
+        
         [HttpPut("UnableAccount/{id}")]
         public async Task<ActionResult<ServiceResponse<Users>>> UnableAccount(string id)
         {
@@ -37,7 +38,6 @@ namespace MyHumbleShop.Controllers
         }
         #endregion
         #region GetAllUser
-        [Authorize]
         [HttpGet("GetAllUser")]
         public async Task<ActionResult<ServiceResponse<List<Users>>>> GetAllUser()
         {

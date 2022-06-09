@@ -45,8 +45,7 @@ namespace MyHumbleShop.Repositories
                     Message = "This category is not exist",
                     Success = false
                 };
-            
-            
+
             //var products = _mapper.Map<Products>(listProductByCategory);
             var displayProducts =  _mapper.Map<List<ProductByCategoryDto>>(listProductByCategory);
 

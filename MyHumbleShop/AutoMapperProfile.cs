@@ -20,7 +20,8 @@ namespace MyHumbleShop
             CreateMap<ProductByCategoryDto, Products>();
             CreateMap<Products,EditProductDto>();
             CreateMap<EditProductDto, Products>();
-
+            CreateMap<Users, UserProfileDto>();
+            CreateMap<UserProfileDto, Users>();
         }
     }
 }
