@@ -147,5 +147,10 @@ namespace MyHumbleShop.Repositories
             serviceResponses.Success = true;
             return serviceResponses;
         }
+        public async Task<List<Products>> ListProduct()
+        {
+            var dbUser = await _products.Find(s => true).ToListAsync();
+            return dbUser;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using ClosedXML.Excel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyHumbleShop.Dtos.Product;
@@ -6,6 +7,8 @@ using MyHumbleShop.Models;
 using MyHumbleShop.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -90,6 +93,37 @@ namespace MyHumbleShop.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
 
             }
+        }
+
+        [HttpPost("ExprotToExcel")]
+        public async Task<ActionResult<ServiceResponse<List<Products>>>> ExprotToExcel()
+        {
+            List<Products> _products = await _productRepo.ListProduct();
+            DataTable dt = new DataTable("Product");
+            dt.Columns.AddRange(new DataColumn[2]{
+                new DataColumn("productName"),
+                new DataColumn("price")
+            });
+
+            foreach (var emp in _products)
+            {
+                dt.Rows.Add(emp.ProductName, emp.Price);
+            }
+            using (ClosedXML.Excel.XLWorkbook wb = new ClosedXML.Excel.XLWorkbook())
+            {
+                wb.Worksheets.Add(dt);
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    wb.SaveAs(stream);
+                    var content = stream.ToArray();
+
+                    return File(content,
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                        , "Product.xlsx"
+                        );
+                }
+            }
+
         }
     }
 }
