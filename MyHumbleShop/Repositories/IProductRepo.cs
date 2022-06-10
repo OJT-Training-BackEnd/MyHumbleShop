@@ -19,5 +19,8 @@ namespace MyHumbleShop.Repositories
 
         Task<ServiceResponse<List<Products>>> GetProductAll();
 
+        Task<List<Products>> ListProduct();
+
+
     }
 }
