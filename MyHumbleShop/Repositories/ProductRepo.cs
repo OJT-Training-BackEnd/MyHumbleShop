@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using ExcelDataReader;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using MyHumbleShop.DatabaseSettings;
@@ -6,7 +8,10 @@ using MyHumbleShop.Dtos.Product;
 using MyHumbleShop.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace MyHumbleShop.Repositories
@@ -147,10 +152,52 @@ namespace MyHumbleShop.Repositories
             serviceResponses.Success = true;
             return serviceResponses;
         }
+
         public async Task<List<Products>> ListProduct()
         {
             var dbUser = await _products.Find(s => true).ToListAsync();
             return dbUser;
+        }
+
+
+
+        public async Task<ServiceResponse<List<Products>>> ReadFileExcelProduct()
+        {
+
+
+            DataSet dsexcelRecords = new DataSet();
+
+
+
+            if (dsexcelRecords != null && dsexcelRecords.Tables.Count > 0)
+            {
+                DataTable dtStudentRecords = dsexcelRecords.Tables[0];
+                for (int i = 0; i < dtStudentRecords.Rows.Count; i++)
+                {
+                    Products objProduct = new Products();
+                    objProduct.ProductName = Convert.ToString(dtStudentRecords.Rows[i][0]);
+                    objProduct.Price = Convert.ToString(dtStudentRecords.Rows[i][1]);
+
+                    await _products.InsertOneAsync(objProduct);
+                }
+                
+            }
+            else
+            {
+                return new ServiceResponse<List<Products>>()
+                {
+
+                    Success = false,
+                    Message = "Selected file is empty."
+                };
+            }
+            return new ServiceResponse<List<Products>>()
+            {
+
+                Success = true,
+                Message = "Oke"
+            };
+
         }
     }
 }

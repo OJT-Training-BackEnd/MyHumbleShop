@@ -21,6 +21,6 @@ namespace MyHumbleShop.Repositories
 
         Task<List<Products>> ListProduct();
 
-
+        Task<ServiceResponse<List<Products>>> ReadFileExcelProduct();
     }
 }
