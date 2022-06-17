@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\New folder (2)\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj": {}
+    "C:\\ojt-training\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj": {}
   },
   "projects": {
-    "D:\\New folder (2)\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj": {
+    "C:\\ojt-training\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\New folder (2)\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
+        "projectUniqueName": "C:\\ojt-training\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
         "projectName": "MyHumbleShop",
-        "projectPath": "D:\\New folder (2)\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
-        "packagesPath": "C:\\Users\\KP\\.nuget\\packages\\",
-        "outputPath": "D:\\New folder (2)\\MyHumbleShop\\MyHumbleShop\\obj\\",
+        "projectPath": "C:\\ojt-training\\MyHumbleShop\\MyHumbleShop\\MyHumbleShop.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\ojt-training\\MyHumbleShop\\MyHumbleShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\KP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -111,7 +111,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

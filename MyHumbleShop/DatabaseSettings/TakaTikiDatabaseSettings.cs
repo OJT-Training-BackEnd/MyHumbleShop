@@ -14,5 +14,6 @@ namespace MyHumbleShop.DatabaseSettings
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
         public string RefreshTokensCollectionName { get; set; }
+        public string RatingsCollectionName { get; set; }
     }
 }

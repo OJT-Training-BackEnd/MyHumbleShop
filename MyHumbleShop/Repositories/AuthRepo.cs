@@ -59,7 +59,7 @@ namespace MyHumbleShop.Repositories
             response.Message = "Register sucessed";
             return response;
         }
-        private string PasswordEncryption(string password)
+        public string PasswordEncryption(string password)
         {
             using (var sha256 = SHA256.Create())
             {

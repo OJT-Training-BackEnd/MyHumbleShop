@@ -25,5 +25,9 @@ namespace MyHumbleShop.Models
         [BsonElement("categoryID")]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Category { get; set; }
+
+        [BsonElement("rating")]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public List<string> RatingId { get; set; }
     }
 }
