@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MyHumbleShop.Dtos.User;
 using MyHumbleShop.Models;
 using MyHumbleShop.Repositories;
 using System;
@@ -43,6 +44,27 @@ namespace MyHumbleShop.Controllers
         {
             var users = await _adminRepo.GetAllUser();
             return Ok(users);
+        }
+        #endregion
+
+        #region
+        [HttpPost("CreateShipper")]
+        public async Task<ActionResult<ServiceResponse<ShipperDTO>>> CreateShipper(string username, string password, string cardId, string phone, string email)
+        {
+            var res = await _adminRepo.CreateShipper(new ShipperDTO
+            {
+                Username = username,
+                Password = password,
+                CardId = cardId,
+                Phone = phone,
+                Email = email
+            });
+
+            if (!res.Success)
+            {
+                return BadRequest(res);
+            }
+            return Ok(res);
         }
         #endregion
     }

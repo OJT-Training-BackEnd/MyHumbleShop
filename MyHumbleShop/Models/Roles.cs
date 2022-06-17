@@ -10,6 +10,7 @@ namespace MyHumbleShop.Models
     public enum Roles
     {
         ADMIN,
-        CUSTOMER
+        CUSTOMER,
+        SHIPPER
     }
 }

@@ -12,6 +12,7 @@ namespace MyHumbleShop.DatabaseSettings
         public string OrdersCollectionName { get; set; }
         public string ProductsCollectionName { get; set; }
         public string RefreshTokensCollectionName { get; set; }
+        public string RatingsCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }

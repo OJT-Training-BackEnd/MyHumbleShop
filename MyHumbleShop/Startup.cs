@@ -45,6 +45,7 @@ namespace MyHumbleShop
             services.AddTransient<ISearchRepo, SearchRepo>();
             services.AddTransient<IAdminRepo, AdminRepo>();
             services.AddTransient<IProductRepo, ProductRepo>();
+            services.AddTransient<IShipperRepo, ShipperRepo>();
 
 
             services.AddAutoMapper(typeof(Startup));

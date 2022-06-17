@@ -22,6 +22,8 @@ namespace MyHumbleShop
             CreateMap<EditProductDto, Products>();
             CreateMap<Users, UserProfileDto>();
             CreateMap<UserProfileDto, Users>();
+            CreateMap<Users, ShipperDTO>();
+            CreateMap<ShipperDTO, Users>();
         }
     }
 }

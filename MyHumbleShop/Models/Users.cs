@@ -23,5 +23,8 @@ namespace MyHumbleShop.Models
         public string Role { get; set; } = Roles.CUSTOMER.ToString();
         [BsonElement("cart")]
         public List<UserCart> Cart { get; set; }
+        [BsonElement("identityCard")]
+        public string CardId { get; set; }
+
     }
 }

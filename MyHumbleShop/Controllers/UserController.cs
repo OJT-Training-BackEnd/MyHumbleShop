@@ -26,7 +26,7 @@ namespace MyHumbleShop.Controllers
 
         [HttpPut("addToCart")]
         public async Task<ActionResult<ServiceResponse<List<Users>>>> addToCart(string productId)
-        { 
+        {
             var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
             return Ok(await _userRepo.AddToCart(productId, userId));
         }
